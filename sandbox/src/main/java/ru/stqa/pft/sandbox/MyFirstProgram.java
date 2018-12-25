@@ -28,10 +28,10 @@ public class MyFirstProgram {
 		*/
 
 		/*Выполнение задания №2*. Пункт 4 */
-		Point p1 = new Point(1,6);
-		Point p2 = new Point(6, 1);
+		Point p1 = new Point(-2.0,2);
+		Point p2 = new Point(1, 1);
 
-		System.out.println("Расстояние между точками c координатами (" + p1.x + ";" + p1.y + ") и (" + p2.x + ";" + p2.y + ") = " + p1.distance(p1, p2));
+		System.out.println("Расстояние между точками c координатами (" + p1.x + ";" + p1.y + ") и (" + p2.x + ";" + p2.y + ") = " + p1.distance(p2));
 
 	}
 
