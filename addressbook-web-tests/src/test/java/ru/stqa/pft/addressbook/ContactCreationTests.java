@@ -30,7 +30,7 @@ public class ContactCreationTests {
   @Test
   public void testContactCreationTests() throws Exception {
     gotoNewContactPage();
-    fillContactForm();
+    fillContactForm("Евгений", "Михайлович", "Сладков", "Ростов-на-Дону, бул. Комарова, 1М", "+79188900075", "sladkov.m.@outlook.com", "12", "Ноябрь", "1987", "Ростов-на-Дону");
     submitContactCreation();
     returnToHomePage();
   }
@@ -43,37 +43,37 @@ public class ContactCreationTests {
     wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Примечание:'])[1]/following::input[1]")).click();
   }
 
-  private void fillContactForm() {
+  private void fillContactForm(String firstname, String middlename, String lastname, String address, String mobile, String email, String bday, String bmonth, String byear, String address2) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys("Евгений");
+    wd.findElement(By.name("firstname")).sendKeys(firstname);
     wd.findElement(By.name("middlename")).click();
     wd.findElement(By.name("middlename")).clear();
-    wd.findElement(By.name("middlename")).sendKeys("Михайлович");
+    wd.findElement(By.name("middlename")).sendKeys(middlename);
     wd.findElement(By.name("lastname")).click();
     wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys("Сладков");
+    wd.findElement(By.name("lastname")).sendKeys(lastname);
     wd.findElement(By.name("address")).click();
     wd.findElement(By.name("address")).clear();
-    wd.findElement(By.name("address")).sendKeys("Ростов-на-Дону, бул. Комарова, 1М");
+    wd.findElement(By.name("address")).sendKeys(address);
     wd.findElement(By.name("mobile")).click();
     wd.findElement(By.name("mobile")).clear();
-    wd.findElement(By.name("mobile")).sendKeys("+79188900075");
+    wd.findElement(By.name("mobile")).sendKeys(mobile);
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys("sladkov.m.@outlook.com");
+    wd.findElement(By.name("email")).sendKeys(email);
     wd.findElement(By.name("bday")).click();
-    new Select(wd.findElement(By.name("bday"))).selectByVisibleText("12");
+    new Select(wd.findElement(By.name("bday"))).selectByVisibleText(bday);
     wd.findElement(By.name("bday")).click();
     wd.findElement(By.name("bmonth")).click();
-    new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText("Ноябрь");
+    new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(bmonth);
     wd.findElement(By.name("bmonth")).click();
     wd.findElement(By.name("byear")).click();
     wd.findElement(By.name("byear")).clear();
-    wd.findElement(By.name("byear")).sendKeys("1987");
+    wd.findElement(By.name("byear")).sendKeys(byear);
     wd.findElement(By.name("address2")).click();
     wd.findElement(By.name("address2")).clear();
-    wd.findElement(By.name("address2")).sendKeys("Ростов-на-Дону");
+    wd.findElement(By.name("address2")).sendKeys(address2);
   }
 
   private void gotoNewContactPage() {
