@@ -40,7 +40,7 @@ public class ContactCreationTests {
   }
 
   private void submitContactCreation() {
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Примечание:'])[1]/following::input[1]")).click();
+    wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
 
   private void fillContactForm(String firstname, String middlename, String lastname, String address, String mobile, String email, String bday, String bmonth, String byear, String address2) {
