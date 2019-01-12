@@ -55,4 +55,8 @@ public class ContactHelper extends HelperBase {
   public void submitContactModification() {
     click(By.xpath("(//input[@name='update'])[2]"));
   }
+
+  public void messageCompleteDeletionContacts() {
+    wd.findElement(By.xpath("//*[contains(text(), 'Record successful deleted')]"));
+  }
 }
