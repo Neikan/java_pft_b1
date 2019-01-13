@@ -10,7 +10,12 @@ public class  NavigationHelper extends HelperBase{
     super(wd);
   }
 
-  public void gotoGroupPage() {
+  public void gotoGroupPage() {//Оптимизированы переходы между страницами
+    if (isElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Группы")
+            && isElementPresent(By.name("new"))) {
+      return;
+    }
     click(By.linkText("Группы"));
   }
 
@@ -18,7 +23,10 @@ public class  NavigationHelper extends HelperBase{
     click(By.linkText("Добавить контакт"));
   }
 
-  public void gotoHomePage() {
+  public void gotoHomePage() {//Оптимизированы переходы между страницами
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
     click(By.linkText("Главная"));
   }
 }
