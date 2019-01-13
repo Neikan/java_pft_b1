@@ -19,9 +19,9 @@ public class  NavigationHelper extends HelperBase{
     click(By.linkText("Группы"));
   }
 
-  public void gotoNewContactPage() {
+  /*public void gotoNewContactPage() {
     click(By.linkText("Добавить контакт"));
-  }
+  }*/
 
   public void gotoHomePage() {//Оптимизированы переходы между страницами
     if (isElementPresent(By.id("maintable"))) {

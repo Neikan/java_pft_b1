@@ -5,6 +5,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
@@ -40,8 +41,19 @@ public class ContactHelper extends HelperBase {
     }
   }
 
+  public void gotoNewContactPage() {
+    click(By.linkText("Добавить контакт"));
+  }
+
   public void selectContact() {
-    click(By.name("selected[]"));
+    if (isElementPresent(By.name("entry"))) {
+      click(By.name("selected[]"));
+    } else {
+        gotoNewContactPage();
+        submitContactCreation();
+        returnToHomePage();
+        click(By.name("selected[]"));
+    }
   }
 
   public void deleteSelectedContacts() {
