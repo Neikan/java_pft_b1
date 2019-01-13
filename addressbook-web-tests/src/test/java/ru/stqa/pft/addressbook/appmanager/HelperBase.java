@@ -19,8 +19,11 @@ public class HelperBase {
   protected void type(By locator, String text) {
     click(locator);
     if (text != null) {//Добавлена возможность запуска тестов с пропуском полей
-      wd.findElement(locator).clear();
-      wd.findElement(locator).sendKeys(text);
+      String existingText = wd.findElement(locator).getAttribute("value");
+      if (! text.equals(existingText)) {//Добавлена проверка на пропуск полей с неизменяемыми в тесте значениями
+        wd.findElement(locator).clear();
+        wd.findElement(locator).sendKeys(text);
+      }
     }
   }
 
