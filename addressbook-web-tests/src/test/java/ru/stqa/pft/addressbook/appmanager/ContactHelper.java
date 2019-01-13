@@ -36,6 +36,7 @@ public class ContactHelper extends HelperBase {
 
     if (creation) {//добавлена проверка наличия/отсутствия элементов на форме
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -46,14 +47,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContact() {
-    if (isElementPresent(By.name("entry"))) {
       click(By.name("selected[]"));
-    } else {
-        gotoNewContactPage();
-        submitContactCreation();
-        returnToHomePage();
-        click(By.name("selected[]"));
-    }
   }
 
   public void deleteSelectedContacts() {
@@ -74,5 +68,16 @@ public class ContactHelper extends HelperBase {
 
   public void messageCompleteDeletionContacts() {
     wd.findElement(By.xpath("//*[contains(text(), 'Record successful deleted')]"));
+  }
+
+  public void createContact(ContactData contactData, boolean creation) {
+    gotoNewContactPage();
+    fillContactForm(contactData, creation);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
