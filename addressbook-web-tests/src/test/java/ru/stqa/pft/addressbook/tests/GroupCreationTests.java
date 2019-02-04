@@ -28,14 +28,8 @@ public class GroupCreationTests extends TestBase {
       }
     }
 
-    //Добавлен второй способ поиска максимального элемента в коллекции после создания (без лямбда-вырежания)
-    Comparator<? super GroupData> byId = new Comparator<GroupData>() {
-      @Override
-      public int compare(GroupData o1, GroupData o2) {
-        return Integer.compare(o1.getId(), o2.getId());
-      }
-    };
-    int max1 = after.stream().max(byId).get().getId();
+    //Добавлен третий способ поиска максимального элемента в коллекции после создания (с лямбда-вырежанием)
+    int max1 = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
 
     group.setId(max);
     before.add(group);
