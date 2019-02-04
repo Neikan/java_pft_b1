@@ -22,4 +22,28 @@ public class GroupData {
   public String getFooter() {
     return footer;
   }
+
+  @Override
+  public String toString() {
+    return "GroupData{" +
+            "name='" + name + '\'' +
+            '}';
+  }
+
+  //Добавлено сравнение списков групп до и после удаления
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    GroupData groupData = (GroupData) o;
+
+    return name != null ? name.equals(groupData.name) : groupData.name == null;
+  }
+
+  //Добавлено сравнение списков групп до и после удаления
+  @Override
+  public int hashCode() {
+    return name != null ? name.hashCode() : 0;
+  }
 }
