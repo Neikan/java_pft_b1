@@ -11,23 +11,20 @@ public class ContactModificationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    app.getNavigationHelper().gotoHomePage();
-    if (! app.getContactHelper().isThereAContact()) {//Добавлена проверка и обеспечение предусловий выполнения ContactModificationTests и ContactDeletionTests
-      app.getContactHelper().createContact(new ContactData("Евгений", "Михайлович", "Сладков", "Ростов-на-Дону, бул. Комарова, 1М", "+79188900075", "sladkov.e.m.@outlook.com", "12", "Ноябрь", "1987", "Ростов-на-Дону", "[не выбрано]"), true);
+    app.goTo().homePage();
+    if (app.contact().list().size() == 0) {//Добавлена проверка и обеспечение предусловий выполнения ContactModificationTests и ContactDeletionTests
+      app.contact().create(new ContactData("Евгений", "Михайлович", "Сладков", "Ростов-на-Дону, бул. Комарова, 1М", "+79188900075", "sladkov.e.m.@outlook.com", "12", "Ноябрь", "1987", "Ростов-на-Дону", "[не выбрано]"), true);
     }
   }
 
   @Test
   public void testContactModification() throws Exception {
 
-    List<ContactData> before = app.getContactHelper().getContactList();
-
+    List<ContactData> before = app.contact().list();
     ContactData contact = new ContactData("Михаил", "Михайлович", "Дмитриев", "Ростов-на-Дону, бул. Комарова, 1М", "+79188900075", "sladkov.e.m.@outlook.com", "12", "Ноябрь", "1987", "Ростов-на-Дону", "[не выбрано]");
     int index = before.size() - 1;
-
-    app.getContactHelper().modifyContact(contact, index);
-
-    List<ContactData> after = app.getContactHelper().getContactList();
+    app.contact().modify(contact, index);
+    List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());
 
     before.remove(index);

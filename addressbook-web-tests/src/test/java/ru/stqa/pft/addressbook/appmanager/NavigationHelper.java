@@ -9,7 +9,7 @@ public class  NavigationHelper extends HelperBase{
     super(wd);
   }
 
-  public void gotoGroupPage() {//Оптимизированы переходы между страницами
+  public void groupPage() {//Оптимизированы переходы между страницами
     if (isElementPresent(By.tagName("h1"))
             && wd.findElement(By.tagName("h1")).getText().equals("Группы")
             && isElementPresent(By.name("new"))) {
@@ -18,7 +18,7 @@ public class  NavigationHelper extends HelperBase{
     click(By.linkText("Группы"));
   }
 
-  public void gotoHomePage() {//Оптимизированы переходы между страницами
+  public void homePage() {//Оптимизированы переходы между страницами
     if (isElementPresent(By.id("maintable"))) {
       return;
     }
