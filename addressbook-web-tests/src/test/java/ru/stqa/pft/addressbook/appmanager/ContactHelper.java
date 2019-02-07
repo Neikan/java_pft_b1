@@ -61,7 +61,17 @@ public class ContactHelper extends HelperBase {
   }
 
   public void initContactModification(int id) {
-    wd.findElement(By.cssSelector("input[value='"+ id + "']")).findElement(By.xpath("//a[@href='edit.php?id="+ id +"']")).click();
+    //wd.findElement(By.cssSelector("input[value='"+ id + "']")).findElement(By.xpath("//a[@href='edit.php?id="+ id +"']")).click();  //Способ 1. Рожден через боль и страдание
+    wd.findElement(By.xpath("//a[@href='edit.php?id="+ id +"']")).click();  //Способ 2. Более простой способ перехода на страницу редактирования контакта - удалено лишнее
+    //wd.findElement(By.cssSelector((String.format("a[@href='edit.php?id=%s']", id)))); //Способ 3. Другая запись "Способа 2"
+    //wd.findElement((By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id)))); //Способ 4
+    //wd.findElement((By.cssSelector(String.format("a[href='edit.php?id=%s']", id))));  //Способ 5
+
+    //Способ 6. Работал бы в старой реализации с индексами
+    //WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    //WebElement row = checkbox.findElement(By.xpath("./../.."));
+    //List<WebElement> cells = row.findElements(By.tagName("td"));
+    //cells.get(7).findElement(By.tagName("a")).click();
   }
 
   public void submitContactModification() {
