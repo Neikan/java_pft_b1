@@ -133,9 +133,9 @@ public class ContactHelper extends HelperBase {
       //String firstname = element.findElement(By.xpath("td[3]")).getText();  //От прежнего List<WebElement> elements
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
+      String allPhones = cells.get(5).getText();
       String[] phones = cells.get(5).getText().split("\n");
-      contactCashe.add(new ContactData()
-              .withId(id).withFirstname(firstname).withLastname(lastname).withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
+      contactCashe.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withAllPhones(allPhones));
     }
     return new Contacts(contactCashe);
   }
