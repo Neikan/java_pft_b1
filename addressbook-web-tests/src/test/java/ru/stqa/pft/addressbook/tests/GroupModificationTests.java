@@ -25,8 +25,8 @@ public class GroupModificationTests extends TestBase {
     GroupData group = new GroupData()
             .withId(modifiedGroup.getId()).withName("test9").withHeader("test12").withFooter("test13");
     app.group().modify(group);
+    assertThat(app.group().count(), equalTo(before.size()));//Проверка на основе хеширования
     Groups after = app.group().all();
-    assertThat(after.size(), equalTo(before.size()));
     assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
   }
 }
