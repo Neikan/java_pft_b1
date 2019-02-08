@@ -29,7 +29,7 @@ public class ContactMailAddressTests extends TestBase{
 
   public static String cleaned(String address) {
     //избавляемся от пустых переносов в конце строки, затем убиваем повторяющиеся пробелы, потом убиваем пробелы перед переносом
-    return address.replaceAll("\\n$", "").replaceAll("\\h+", " ").replaceAll(" \n","\n");
+    return address.replaceAll("\\r\\n$|\\n$", "").replaceAll("\\h+", " ").replaceAll(" \n","\n");
   }
 
 }
