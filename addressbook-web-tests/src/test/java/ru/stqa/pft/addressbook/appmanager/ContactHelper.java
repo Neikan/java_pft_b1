@@ -29,10 +29,10 @@ public class ContactHelper extends HelperBase {
     type(By.name("middlename"), contactData.getMiddlename());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("address"), contactData.getAddress());
-    type(By.name("mobile"), contactData.getMobilePhone());
-    type(By.name("home"), contactData.getHomePhone());
-    type(By.name("work"), contactData.getWorkPhone());
-    type(By.name("email"), contactData.getEmail());
+    type(By.name("mobile"), contactData.getPhoneMobile());
+    type(By.name("home"), contactData.getPhoneHome());
+    type(By.name("work"), contactData.getPhoneWork());
+    type(By.name("email"), contactData.getEmailOne());
     new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
     new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getBmonth());
     type(By.name("byear"), contactData.getByear());
@@ -129,13 +129,13 @@ public class ContactHelper extends HelperBase {
     for (WebElement row : rows) {
       List<WebElement> cells = row.findElements(By.tagName("td"));
       int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
-      //String lastname = element.findElement(By.xpath("td[2]")).getText(); //От прежнего List<WebElement> elements
-      //String firstname = element.findElement(By.xpath("td[3]")).getText();  //От прежнего List<WebElement> elements
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
-      String allPhones = cells.get(5).getText();
+      String address = cells.get(3).getText();
+      String emailsAll = cells.get(4).getText();
+      String phonesAll = cells.get(5).getText();
       String[] phones = cells.get(5).getText().split("\n");
-      contactCashe.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withAllPhones(allPhones));
+      contactCashe.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withPhonesAll(phonesAll).withEmailsAll(emailsAll).withAddress(address));
     }
     return new Contacts(contactCashe);
   }
@@ -144,12 +144,18 @@ public class ContactHelper extends HelperBase {
     initContactModification(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
-    String home = wd.findElement(By.name("home")).getAttribute("value");
-    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
-    String work = wd.findElement(By.name("work")).getAttribute("value");
+    String phoneHome = wd.findElement(By.name("home")).getAttribute("value");
+    String phoneMobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String phoneWork = wd.findElement(By.name("work")).getAttribute("value");
+    String emailOne = wd.findElement(By.name("email")).getAttribute("value");
+    String emailTwo = wd.findElement(By.name("email2")).getAttribute("value");
+    String emailThree = wd.findElement(By.name("email3")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
     wd.navigate().back();
     return new ContactData()
             .withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
-            .withMobilePhone(mobile).withHomePhone(home).withWorkPhone(work);
+            .withPhoneMobile(phoneMobile).withPhoneHome(phoneHome).withPhoneWork(phoneWork)
+            .withEmailOne(emailOne).withEmailTwo(emailTwo).withEmailThree(emailThree)
+            .withAddress(address);
   }
 }

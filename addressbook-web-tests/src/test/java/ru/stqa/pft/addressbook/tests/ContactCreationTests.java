@@ -13,7 +13,7 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() throws Exception {
     Contacts before = app.contact().all();
     ContactData contact = new ContactData()
-            .withFirstname("Джон").withMiddlename("Джошович").withLastname("Смит").withAddress("Вашингтон").withMobilePhone("+1119188900075").withEmail("smite@outlook.com").withBday("17").withBmonth("Декабрь").withByear("1980").withAddress2("DC").withGroup("[не выбрано]");
+            .withFirstname("Джон").withMiddlename("Джошович").withLastname("Смит").withAddress("Вашингтон").withPhoneMobile("+1119188900075").withEmailOne("smite@outlook.com").withBday("17").withBmonth("Декабрь").withByear("1980").withAddress2("DC").withGroup("[не выбрано]");
     app.contact().create(contact, true);
     assertThat(app.contact().count(), equalTo(before.size() + 1));//Проверка на основе хеширования
     Contacts after = app.contact().all();

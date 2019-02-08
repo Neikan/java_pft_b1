@@ -6,16 +6,19 @@ public class ContactData {
   private String middlename;
   private String lastname;
   private String address;
-  private String mobilePhone;
-  private String workPhone;
-  private String homePhone;
-  private String email;
+  private String phoneMobile;
+  private String phoneWork;
+  private String phoneHome;
+  private String phonesAll;
+  private String emailOne;
+  private String emailTwo;
+  private String emailThree;
+  private String emailsAll;
   private String bday;
   private String bmonth;
   private String byear;
   private String address2;
   private String group;
-  private String allPhones;
 
   public int getId() {
     return id;
@@ -37,20 +40,36 @@ public class ContactData {
     return address;
   }
 
-  public String getMobilePhone() {
-    return mobilePhone;
+  public String getPhoneMobile() {
+    return phoneMobile;
   }
 
-  public String getHomePhone() {
-    return homePhone;
+  public String getPhoneHome() {
+    return phoneHome;
   }
 
-  public String getWorkPhone() {
-    return workPhone;
+  public String getPhoneWork() {
+    return phoneWork;
   }
 
-  public String getEmail() {
-    return email;
+  public String getPhonesAll() {
+    return phonesAll;
+  }
+
+  public String getEmailOne() {
+    return emailOne;
+  }
+
+  public String getEmailTwo() {
+    return emailTwo;
+  }
+
+  public String getEmailThree() {
+    return emailThree;
+  }
+
+  public String getEmailsAll() {
+    return emailsAll;
   }
 
   public String getBday() {
@@ -71,10 +90,6 @@ public class ContactData {
 
   public String getGroup() {
     return group;
-  }
-
-  public String getAllPhones() {
-    return allPhones;
   }
 
   public ContactData withId(int id) {
@@ -102,25 +117,46 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withMobilePhone(String mobilePhone) {
-    this.mobilePhone = mobilePhone;
+  public ContactData withPhoneMobile(String phoneMobile) {
+    this.phoneMobile = phoneMobile;
     return this;
   }
 
-  public ContactData withHomePhone(String homePhone) {
-    this.homePhone = homePhone;
+  public ContactData withPhoneHome(String phoneHome) {
+    this.phoneHome = phoneHome;
     return this;
   }
 
-  public ContactData withWorkPhone(String workPhone) {
-    this.workPhone = workPhone;
+  public ContactData withPhoneWork(String phoneWork) {
+    this.phoneWork = phoneWork;
     return this;
   }
 
-  public ContactData withEmail(String email) {
-    this.email = email;
+  public ContactData withPhonesAll(String phonesAll) {
+    this.phonesAll = phonesAll;
     return this;
   }
+
+  public ContactData withEmailOne(String emailOne) {
+    this.emailOne = emailOne;
+    return this;
+  }
+
+  public ContactData withEmailTwo(String emailTwo) {
+    this.emailTwo = emailTwo;
+    return this;
+  }
+
+  public ContactData withEmailThree(String emailThree) {
+    this.emailThree = emailThree;
+    return this;
+  }
+
+  public ContactData withEmailsAll(String emailsAll) {
+    this.emailsAll = emailsAll;
+    return this;
+  }
+
 
   public ContactData withBday(String bday) {
     this.bday = bday;
@@ -144,11 +180,6 @@ public class ContactData {
 
   public ContactData withGroup(String group) {
     this.group = group;
-    return this;
-  }
-
-  public ContactData withAllPhones(String allPhones) {
-    this.allPhones = allPhones;
     return this;
   }
 
