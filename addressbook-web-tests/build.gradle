@@ -21,7 +21,9 @@ task testGroups(type: Test) {
     useTestNG {
         suites 'src/test/resources/testng-groups.xml'
     }
-    systemProperty 'browser', "${browser}"
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
 }
 
 task testContacts(type: Test) {
