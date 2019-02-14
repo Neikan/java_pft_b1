@@ -61,8 +61,8 @@ public class GroupDataGenerator {
 
   private void saveAsXml(List<GroupData> groups, File file) throws IOException {
     XStream xstream = new XStream();
-    //xstream.alias("group", GroupData.class);//Изменение тега на "group". Способ 1
-    xstream.processAnnotations(GroupData.class);//Изменение тега на "group". Способ 2
+    //xstream.alias("group", GroupData.class); // Изменение тега "ru.stqa.pft.addressbook.model.GroupData" на "group". Способ 1
+    xstream.processAnnotations(GroupData.class); // Изменение тега "ru.stqa.pft.addressbook.model.GroupData" на "group". Способ 2
     String xml = xstream.toXML(groups);
     Writer writer = new FileWriter(file);
     writer.write(xml);
