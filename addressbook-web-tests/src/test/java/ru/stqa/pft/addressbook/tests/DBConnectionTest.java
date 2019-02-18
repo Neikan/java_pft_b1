@@ -13,7 +13,6 @@ public class DBConnectionTest {
   @Test
   public void testDBConnection() {
     Connection conn = null;
-    System.out.println(TimeZone.getDefault().getID());
     try {
       conn =
               DriverManager.getConnection("jdbc:mysql://localhost:3306/addressbook?"
@@ -31,7 +30,9 @@ public class DBConnectionTest {
       st.close();
       conn.close();
 
-      System.out.println(groups);
+      for (GroupData group : groups) {
+        System.out.println(group);
+      }
 
       // Do something with the Connection
     } catch (SQLException ex) {
