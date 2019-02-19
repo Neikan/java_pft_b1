@@ -5,11 +5,9 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.sql.*;
-import java.util.TimeZone;
-
 
 public class GroupDbConnectionTest {
-
+  
   @Test
   public void testDBConnection() {
     Connection conn = null;
