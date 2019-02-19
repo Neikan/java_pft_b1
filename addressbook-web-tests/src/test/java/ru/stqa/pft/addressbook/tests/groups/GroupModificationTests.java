@@ -15,9 +15,7 @@ public class GroupModificationTests extends TestBase {
   public void ensurePreconditions() {
     if (app.db().groups().size() == 0) {
       app.goTo().groupPage();
-      if (app.group().all().size() == 0) {//Добавлена проверка и обеспечение предусловий выполнения GroupModificationTests и GroupDeletionTests
-        app.group().create(new GroupData().withName("test4"));
-      }
+      app.group().create(new GroupData().withName("test4"));
     }
   }
 

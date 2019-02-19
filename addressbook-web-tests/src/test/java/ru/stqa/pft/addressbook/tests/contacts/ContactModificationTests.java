@@ -6,8 +6,6 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.tests.TestBase;
 
-import java.io.File;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -17,10 +15,8 @@ public class ContactModificationTests extends TestBase {
   public void ensurePreconditions() {
     if (app.db().contacts().size() == 0) {
       app.goTo().homePage();
-      if (app.contact().all().size() == 0) {//Добавлена проверка и обеспечение предусловий выполнения ContactModificationTests и ContactDeletionTests
-        app.contact().create(new ContactData()
+      app.contact().create(new ContactData()
                 .withFirstname("Евгений").withMiddlename("Михайлович").withLastname("Сладков").withAddress("Ростов-на-Дону, бул. Комарова, 1М").withPhoneMobile("+79188900075").withEmailOne("sladkov.e.m.@outlook.com").withBday("12").withBmonth("Ноябрь").withByear("1987").withAddress2("Ростов-на-Дону").withGroup("[не выбрано]"), true);
-      }
     }
   }
 

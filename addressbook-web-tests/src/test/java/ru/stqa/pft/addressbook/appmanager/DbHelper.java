@@ -25,6 +25,7 @@ public class DbHelper {
     sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
   }
 
+  // Получение групп
   public Groups groups() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
@@ -34,6 +35,7 @@ public class DbHelper {
     return new Groups(result);
   }
 
+  // Получение контактов
   public Contacts contacts() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
