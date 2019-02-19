@@ -7,7 +7,8 @@
     "emailOne": "testmail0@mail.test",
     "bday": "-",
     "bmonth": "-",
-    "group": "[не выбрано]"
+    "group": "[не выбрано]",
+    "photo": "src\\test\\resources\\Batman.jpg"
   },
   {
     "firstname": "firstname 1",
@@ -17,7 +18,8 @@
     "emailOne": "testmail1@mail.test",
     "bday": "-",
     "bmonth": "-",
-    "group": "[не выбрано]"
+    "group": "[не выбрано]",
+    "photo": "src\\test\\resources\\Batman.jpg"
   },
   {
     "firstname": "firstname 2",
@@ -27,7 +29,8 @@
     "emailOne": "testmail2@mail.test",
     "bday": "-",
     "bmonth": "-",
-    "group": "[не выбрано]"
+    "group": "[не выбрано]",
+    "photo": "src\\test\\resources\\Batman.jpg"
   },
   {
     "firstname": "firstname 3",
@@ -37,7 +40,8 @@
     "emailOne": "testmail3@mail.test",
     "bday": "-",
     "bmonth": "-",
-    "group": "[не выбрано]"
+    "group": "[не выбрано]",
+    "photo": "src\\test\\resources\\Batman.jpg"
   },
   {
     "firstname": "firstname 4",
@@ -47,6 +51,7 @@
     "emailOne": "testmail4@mail.test",
     "bday": "-",
     "bmonth": "-",
-    "group": "[не выбрано]"
+    "group": "[не выбрано]",
+    "photo": "src\\test\\resources\\Batman.jpg"
   }
 ]

@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.TimeZone;
 
 
-public class GroupDBConnectionTest {
+public class GroupDbConnectionTest {
 
   @Test
   public void testDBConnection() {

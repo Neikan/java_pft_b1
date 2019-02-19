@@ -84,7 +84,7 @@ public class ContactDataGenerator {
         contacts.add(new ContactData().withFirstname(String.format("firstname %s", i))
                 .withMiddlename(String.format("middlename %s", i)).withLastname(String.format("lastname %s", i))
                 .withPhoneMobile(String.format("+7918123456%s", i)).withEmailOne(String.format("testmail%s@mail.test", i))
-                .withBday("-").withBmonth("-").withGroup("[не выбрано]"));
+                .withBday("-").withBmonth("-").withGroup("[не выбрано]").withPhoto(new File("src/test/resources/Batman.jpg")));
       }
       return contacts;
   }
