@@ -1,13 +1,18 @@
-package ru.stqa.pft.addressbook.tests;
+package ru.stqa.pft.addressbook.tests.contacts;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.tests.TestBase;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
-public class ContactMailAddressTests extends TestBase{
+
+public class ContactPhoneTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
@@ -19,17 +24,23 @@ public class ContactMailAddressTests extends TestBase{
   }
 
   @Test
-  public void testContactMailAddress() {
+  public void testContactPhones() {
     app.goTo().homePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(contact.getAddress(), equalTo(cleaned(contactInfoFromEditForm.getAddress())));
+    assertThat(contact.getPhonesAll(), equalTo(mergePhones(contactInfoFromEditForm)));
   }
 
-  public static String cleaned(String address) {
-    //избавляемся от пустых переносов в конце строки, затем убиваем повторяющиеся пробелы, потом убиваем пробелы перед переносом
-    return address.replaceAll("\\r\\n$|\\n$", "").replaceAll("\\h+", " ").replaceAll(" \n","\n");
+  private String mergePhones(ContactData contact) {
+    return Arrays.asList(contact.getPhoneHome(), contact.getPhoneMobile(), contact.getPhoneWork())
+            .stream().filter((s) -> !s.equals(""))
+            .map(ContactPhoneTests::cleaned)
+            .collect(Collectors.joining("\n"));
+  }
+
+  public static String cleaned(String phone) {
+    return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 
 }

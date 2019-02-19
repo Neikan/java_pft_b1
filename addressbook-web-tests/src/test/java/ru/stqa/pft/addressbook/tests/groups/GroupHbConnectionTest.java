@@ -1,4 +1,4 @@
-package ru.stqa.pft.addressbook.tests;
+package ru.stqa.pft.addressbook.tests.groups;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -1,14 +1,15 @@
-package ru.stqa.pft.addressbook.tests;
+package ru.stqa.pft.addressbook.tests.groups;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
+import ru.stqa.pft.addressbook.tests.TestBase;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class GroupDeletionTests extends TestBase {
+public class GroupModificationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
@@ -19,12 +20,14 @@ public class GroupDeletionTests extends TestBase {
   }
 
   @Test
-  public void testGroupDeletion() throws Exception {
+  public void testGroupModification() {
     Groups before = app.group().all();
-    GroupData deletedGroup = before.iterator().next();
-    app.group().delete(deletedGroup);
-    assertThat(app.group().count(), equalTo(before.size() - 1));//Проверка на основе хеширования
+    GroupData modifiedGroup = before.iterator().next();
+    GroupData group = new GroupData()
+            .withId(modifiedGroup.getId()).withName("test9").withHeader("test12").withFooter("test13");
+    app.group().modify(group);
+    assertThat(app.group().count(), equalTo(before.size()));//Проверка на основе хеширования
     Groups after = app.group().all();
-    assertThat(after, equalTo(before.without(deletedGroup)));
+    assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
   }
 }
