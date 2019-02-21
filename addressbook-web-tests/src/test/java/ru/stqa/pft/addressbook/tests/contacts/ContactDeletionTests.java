@@ -30,5 +30,6 @@ public class ContactDeletionTests extends TestBase {
     assertThat(app.contact().count(), equalTo(before.size() - 1));//Проверка на основе хеширования
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(deletedContact)));
+    verifyContactListInUI();
   }
 }
