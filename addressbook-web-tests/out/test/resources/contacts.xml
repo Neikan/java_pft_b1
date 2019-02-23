@@ -7,7 +7,8 @@
     <emailOne>testmail0@mail.test</emailOne>
     <bday>-</bday>
     <bmonth>-</bmonth>
-    <group>[не выбрано]</group>
+    <photo>src\test\resources\Batman.jpg</photo>
+    <groups/>
   </contact>
   <contact>
     <firstname>firstname 1</firstname>
@@ -17,7 +18,8 @@
     <emailOne>testmail1@mail.test</emailOne>
     <bday>-</bday>
     <bmonth>-</bmonth>
-    <group>[не выбрано]</group>
+    <photo>src\test\resources\Batman.jpg</photo>
+    <groups/>
   </contact>
   <contact>
     <firstname>firstname 2</firstname>
@@ -27,7 +29,8 @@
     <emailOne>testmail2@mail.test</emailOne>
     <bday>-</bday>
     <bmonth>-</bmonth>
-    <group>[не выбрано]</group>
+    <photo>src\test\resources\Batman.jpg</photo>
+    <groups/>
   </contact>
   <contact>
     <firstname>firstname 3</firstname>
@@ -37,7 +40,8 @@
     <emailOne>testmail3@mail.test</emailOne>
     <bday>-</bday>
     <bmonth>-</bmonth>
-    <group>[не выбрано]</group>
+    <photo>src\test\resources\Batman.jpg</photo>
+    <groups/>
   </contact>
   <contact>
     <firstname>firstname 4</firstname>
@@ -47,6 +51,7 @@
     <emailOne>testmail4@mail.test</emailOne>
     <bday>-</bday>
     <bmonth>-</bmonth>
-    <group>[не выбрано]</group>
+    <photo>src\test\resources\Batman.jpg</photo>
+    <groups/>
   </contact>
 </list>

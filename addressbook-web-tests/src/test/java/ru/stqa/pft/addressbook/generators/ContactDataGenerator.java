@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -72,8 +73,8 @@ public class ContactDataGenerator {
   private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
     try (Writer writer = new FileWriter(file)) {
       for (ContactData contact : contacts) {
-        writer.write(String.format("%s;%s;%s;%s;%s;\n", contact.getFirstname(), contact.getMiddlename(), contact.getLastname()
-                , contact.getPhoneMobile(), contact.getEmailOne(), contact.getBday(), contact.getBmonth(), contact.getGroup()));
+        writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;\n", contact.getFirstname(), contact.getMiddlename(), contact.getLastname()
+                , contact.getPhoneMobile(), contact.getEmailOne(), contact.getBday(), contact.getBmonth(),/* contact.getGroups(), */contact.getPhoto()));
       }
     }
   }
@@ -84,7 +85,7 @@ public class ContactDataGenerator {
         contacts.add(new ContactData().withFirstname(String.format("firstname %s", i))
                 .withMiddlename(String.format("middlename %s", i)).withLastname(String.format("lastname %s", i))
                 .withPhoneMobile(String.format("+7918123456%s", i)).withEmailOne(String.format("testmail%s@mail.test", i))
-                .withBday("-").withBmonth("-").withGroup("[не выбрано]").withPhoto(new File("src/test/resources/Batman.jpg")));
+                .withBday("-").withBmonth("-")/*.inGroup(new GroupData().withName("не выбрано"))*/.withPhoto(new File("src/test/resources/Batman.jpg")));
       }
       return contacts;
   }

@@ -7,6 +7,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.tests.TestBase;
 
 import java.io.BufferedReader;
@@ -32,7 +34,7 @@ public class ContactCreationTests extends TestBase {
       String[] split = line.split(";");
       list.add(new Object[] {new ContactData().withFirstname(split[0]).withMiddlename(split[1]).withLastname(split[2])
               .withPhoneMobile(split[3]).withEmailOne(split[4])
-              .withBday(split[5]).withBmonth(split[6]).withByear(split[7]).withGroup(split[8])});
+              .withBday(split[5]).withBmonth(split[6]).withByear(split[7])/*.inGroup(new GroupData().withName(split[8])*/});
       line = reader.readLine();
     }
     return list.iterator();
@@ -70,8 +72,9 @@ public class ContactCreationTests extends TestBase {
     }
   }
 
-  @Test(dataProvider = "validContactsFromXml")
+  @Test(dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) throws Exception {
+    Groups groups = app.db().groups();
     Contacts before = app.db().contacts();
     app.contact().create(contact, true);
     assertThat(app.contact().count(), equalTo(before.size() + 1)); // Проверка на основе хеширования
