@@ -23,7 +23,6 @@ public class ContactDeletionFromGroupTests extends TestBase {
       app.goTo().groupPage();
       app.group().create(new GroupData().withName("GroupForDeletionContactFrom"));
     }
-
     if (app.db().contacts().iterator().next().getGroups().size() == 0) { // Проверяем, что выбираемый контакт состоит в какой-либо группе
       app.contact().addToGroup(app.db().contacts().iterator().next(), app.db().groups().iterator().next().getId());
     }
