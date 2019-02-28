@@ -57,6 +57,19 @@ public class ContactHelper extends HelperBase {
     wd.findElement(By.cssSelector("input[value='"+ id + "']")).click();
   }
 
+  private void selectToGroup(Integer idGroup) { // Выбираем группу по id, т.к. он уникален
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(idGroup));
+  }
+
+  private void cliclToGroup() {
+    wd.findElement(By.name("add")).click();
+  }
+
+  public void messageCompleteAddedContactToGroup() {
+    wd.findElement(By.xpath("//*[contains(text(), 'Users added')]"));
+  }
+
+
   public void deleteSelectedContacts() {
     click(By.xpath("//input[@value='Удалить']"));
   }
@@ -110,6 +123,13 @@ public class ContactHelper extends HelperBase {
     acceptDeletionContacts();
     contactCashe = null;
     messageCompleteDeletionContacts();
+  }
+
+  public void addToGroup(ContactData contact, Integer idGroup) { // Добавление контакта в группу
+    selectContactById(contact.getId());
+    selectToGroup(idGroup);
+    cliclToGroup();
+    messageCompleteAddedContactToGroup();
   }
 
   public boolean isThereAContact() {
