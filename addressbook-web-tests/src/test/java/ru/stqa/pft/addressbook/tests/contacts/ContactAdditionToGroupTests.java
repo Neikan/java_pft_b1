@@ -62,15 +62,15 @@ public class ContactAdditionToGroupTests extends TestBase {
       app.contact().addToGroup(addedContact, li.getId());
     }
 
-    assertThat((addedContact.getGroups().size()+listGroupWithoutAddedContact.size()), equalTo(groupsDb.size())); // Проверяем через количество добавдений, что контакт добавлен во все группы
+    assertThat((addedContact.getGroups().size()+listGroupWithoutAddedContact.size()), equalTo(groupsDb.size())); // Проверяем через количество добавлений, что контакт добавлен во все группы
 
     Integer idContact = addedContact.getId(); // Заново получаем контакт из БД
-    addedContact = app.db().contacts().stream()
+    ContactData checkContact = app.db().contacts().stream()
             .filter(c -> (idContact == c.getId()))
             .findAny()
             .orElse(null);
 
-    assertThat(addedContact.getGroups().size(), equalTo(groupsDb.size())); // Проверяем через БД, что контакт добавлен во все группы
+    assertThat(checkContact.getGroups().size(), equalTo(groupsDb.size())); // Проверяем через БД, что контакт добавлен во все группы
 
   }
 }
