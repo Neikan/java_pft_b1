@@ -13,11 +13,13 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
+
   private final Properties properties;
   private WebDriver wd;
   private String browser;
   private RegistrationHelper registrationHelper;
-  private FtpHelper ftp;
+  private FtpHelper ftpHelper;
+  private MailHelper mailHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -35,8 +37,8 @@ public class ApplicationManager {
     }
   }
 
-  public HttpSession newSession() {
-    return new HttpSession(this);
+  public SessionHttp newSession() {
+    return new SessionHttp(this);
   }
 
   public String getProperty(String key) {
@@ -66,9 +68,16 @@ public class ApplicationManager {
   }
 
   public FtpHelper ftp() {
-    if (ftp == null) {
-      ftp = new FtpHelper(this);
+    if (ftpHelper == null) {
+      ftpHelper = new FtpHelper(this);
     }
-    return ftp;
+    return ftpHelper;
+  }
+
+  public MailHelper mail() {
+    if (mailHelper == null) {
+      mailHelper = new MailHelper(this);
+    }
+    return mailHelper;
   }
 }

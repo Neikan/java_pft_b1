@@ -16,11 +16,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HttpSession {
+public class SessionHttp {
+
   private CloseableHttpClient httpclient;
   private ApplicationManager app;
 
-  public HttpSession(ApplicationManager app) {
+  public SessionHttp(ApplicationManager app) {
     this.app = app;
     httpclient = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
   }
