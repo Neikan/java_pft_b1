@@ -13,14 +13,18 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-
   private final Properties properties;
   private WebDriver wd;
+
   private String browser;
   private RegistrationHelper registrationHelper;
   private FtpHelper ftpHelper;
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
+  private SessionHelper sessionHelper;
+  private NavigationHelper navigationHelper;
+  private UserHelper userHelper;
+  private DbHelper dbHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -30,6 +34,7 @@ public class ApplicationManager {
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+    dbHelper = new DbHelper(); // Если нет подключения к БД, то упадем раньше, чем начнется инициализация всего остального
   }
 
   public void stop() {
@@ -87,5 +92,30 @@ public class ApplicationManager {
       jamesHelper = new JamesHelper(this);
     }
     return jamesHelper;
+  }
+
+  public SessionHelper session() {
+    if (sessionHelper == null) {
+      sessionHelper = new SessionHelper(this);
+    }
+    return sessionHelper;
+  }
+
+  public NavigationHelper goTo() {
+    if (navigationHelper == null) {
+      navigationHelper = new NavigationHelper(this);
+    }
+    return navigationHelper;
+  }
+
+  public UserHelper users() {
+    if (userHelper == null) {
+      userHelper = new UserHelper(this);
+    }
+    return userHelper;
+  }
+
+  public DbHelper db() {
+    return dbHelper;
   }
 }
