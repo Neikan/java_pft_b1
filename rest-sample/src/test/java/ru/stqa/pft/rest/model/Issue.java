@@ -38,8 +38,8 @@ public class Issue {
     return state_name;
   }
 
-  public Issue withStatus(String status) {
-    this.state_name = status;
+  public Issue withState_name(String state_name) {
+    this.state_name = state_name;
     return this;
   }
 
